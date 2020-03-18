@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title>My_blog.ru</title>
+        <body>
+            <div id="block_art">
+                <ul>
+                    <li v-for="item in blocks" :key="item.title">
+                        <a href="#" v-on:click="open_post(item)"> {{ item.title }} </a>
+                    </li>
+                    
+                </ul>
+                <div v-if=(showPost)>  
+                    <h5>{{ currentPost.title }}</h5>
+                    {{ currentPost.text }}
+                    <div>
+                        <input v-model="currentComment"><button v-on:click="comment"> Комментировать </button>
+                    </div>
+                    <div v-for="comment in currentPost.comments">
+                        {{ comment }}
+                    </div>
+                </div>
+            </div>
+
+            <script src="source.js"></script>
+            <link rel="stylesheet" href="style.css">
+        </body>
+    </head>
+</html>
